@@ -1,9 +1,9 @@
-# <Título del Repositorio>
+# <Proyecto>
 Este repositorio es una plantilla para ser usada en la materia ECXXXX. Modifique el contenido de esta plantilla para adaptarlo a su proyecto manteniendo la estructura de carpetas que se explica en [Estructura del repositorio](#Estructura-del-repositorio).
 
 ## Integrantes del equipo
 * 15-11152 Orazio Javier Portillo Gatto
-*12-06824  Bensedi Jose Acosta 
+*  12-06824  Bensedi Jose Acosta
 
 ## Estructura del repositorio
 ### docs/
