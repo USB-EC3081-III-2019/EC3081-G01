@@ -3,7 +3,7 @@ Este repositorio es una plantilla para ser usada en la materia ECXXXX. Modifique
 
 ## Integrantes del equipo
 * 15-11152 Orazio Javier Portillo Gatto
-*12-06824  Bensedi Jose Acosta Barrios
+*12-06824  Bensedi Jose Acosta 
 
 ## Estructura del repositorio
 ### docs/
