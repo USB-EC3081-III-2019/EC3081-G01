@@ -1,6 +1,6 @@
 /*
- * File:   main.c
- * Author: user
+ * File:   LCD.c
+ * Author: Orazio Gatto
  *
  * Created on 24 de septiembre de 2019, 01:43 PM
  */
@@ -18,33 +18,46 @@
 
 #define _XTAL_FREQ 4000000
 
-#define LCD_DATO PORTD
-#define LCD_E PORTCbits.RC0 
 #define LCD_RS PORTCbits.RC1
+#define LCD_E PORTCbits.RC0 
+#define LCD_DATO PORTD
+
+
 
 void LCD_Comando(char dato);
 void LCD_Escribir(char dato);
 void LCD_Configuracion_Inicial();
 void PIC_Configuracion_Inicial();
+void LCD_Escribir_Cadena(char str[]);
 
 void main ()
 {
-    
+    char ora[] = "HOLA ¿Como estas?";
     PIC_Configuracion_Inicial();
     LCD_Configuracion_Inicial();
-    LCD_Escribir('a');
     
+    LCD_Escribir_Cadena(ora);
+    
+    LCD_Escribir('A');
+    LCD_Escribir('a');
+    LCD_Escribir('A');
+    LCD_Escribir('a');
+    LCD_Escribir('A');
+    
+	
+	
     while(1){
+        __delay_ms(500);
         PORTAbits.RA0 = 1;
         __delay_ms(500);
         PORTAbits.RA0 = 0;
-        __delay_ms(500);
-    }
-};
+        
+    };
+}
 
 void LCD_Comando ( char dato )
 {
-    LCD_RS = 1;
+    LCD_RS = 0;
     LCD_DATO = dato;
     LCD_E = 1;
     LCD_E = 0;
@@ -58,18 +71,29 @@ void LCD_Comando ( char dato )
         __delay_us(40);
     }
     
-};
+}
+
+void LCD_Escribir_Cadena(char str[])
+{
+    int i=0;
+    while (str[i]!= '\0'&& i<1000)
+    {
+        LCD_Escribir(str[i]);
+        i++;
+    }
+    
+}
 
 void LCD_Escribir ( char dato )
 {
-    LCD_RS = 0;
+    LCD_RS = 1;
     LCD_DATO = dato;
     LCD_E = 1;
     LCD_E = 0;
     __delay_us(40);
 
     
-};
+}
 
 void LCD_Configuracion_Inicial ()
 {
@@ -85,15 +109,14 @@ void LCD_Configuracion_Inicial ()
     LCD_Comando(0x01);/*Display Clear*/
     LCD_Comando(0x06);/*Incrementa el cursor*/
     LCD_Comando(0x0C);
-};
+}
 
 void PIC_Configuracion_Inicial ()
 {
     TRISD = 0;
     TRISCbits.TRISC0 = 0;
     TRISCbits.TRISC1 = 0;
-    TRISAbits.TRISA0 = 0;
-    ADCON0 = 0;
-    
+    TRISA = 0;
+    ADCON0 = 0b00000000;
     INTCON = 0;
 };
