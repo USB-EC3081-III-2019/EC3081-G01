@@ -14,10 +14,10 @@
 
 void main ()
 {
-    int Horizontal, Vertical, C;
+    int Horizontal, Vertical, C, C1;
     
     char aux[]="GRUPO 01";
-    char aux1[]="ORAZIO PORTILLO";
+    char aux1[]="ORAZIO PORTILLO - BENSDI";
     
     PIC_Configuracion_Inicial();
     LCD_Configuracion_Inicial();
@@ -31,8 +31,10 @@ void main ()
     
     LCD_Escribir_Cadena(aux);
     
+    
     ///////////////////////
     
+    C1 = LCD_Contador(aux1);
     
     Horizontal = -C-Horizontal;
     Vertical = 2; // 1 Arriba, 2 Abajo
@@ -40,6 +42,13 @@ void main ()
     LCD_Cursor(Horizontal, Vertical);
     
     LCD_Escribir_Cadena(aux1);
+    
+        while(1)
+    {
+        //LCD_Display(C,0);
+        LCD_Display(C1,0);
+    }
+    
             
     /*char ora[] = "HOLAComo estas";
     PIC_Configuracion_Inicial();
@@ -63,3 +72,4 @@ void main ()
         
     }
 }
+
