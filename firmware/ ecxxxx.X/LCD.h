@@ -17,6 +17,7 @@ void LCD_Configuracion_Inicial();
 void PIC_Configuracion_Inicial();
 void LCD_Escribir_Cadena(char str[]);
 void LCD_Cursor (int Horizontal , int Vertical);
+void LCD_Display (int T, int H);
 int LCD_Contador(char c[]);
 
 void LCD_Comando ( char dato )
@@ -121,4 +122,23 @@ void LCD_Cursor (int h , int v)
             LCD_Comando(0x14);
         }
     }
+}
+
+void LCD_Display (int T, int H)
+{
+    int aux1, i;
+    __delay_ms(2);
+    LCD_Comando(0x02);
+    
+    __delay_ms(2000);
+    if(T>16 && T<40)
+    {
+        aux1 = T-16;
+        for(i=-1;i<aux1;i++)
+        {
+            __delay_ms(500);
+            LCD_Comando(0x1B);
+        }
+    }
+
 }
