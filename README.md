@@ -15,16 +15,16 @@
 > Son aquellos dispositivos que están capacitados para detectar acciones o estímulos externos y responder en consecuencia de dichos estímulos. Es decir, nos permiten captar la información del medio físico que nos rodea. Se encarga de medir las magnitudes físicas y transformarlas en señales eléctricas capaces de ser medidas por un microcontrolador y ser utilizadas posteriormente.
 
 ### Sensores a utilizar:
-* Humedad y Temperatura (DHT11).
-* Foto celda.
-* Humedad de sustrato.
+* Humedad y Temperatura (DHT11): [DHT11](https://naylampmechatronics.com/sensores-temperatura-y-humedad/57-sensor-de-temperatura-y-humedad-relativa-dht11.html)
+* Fotocelda (LDR): [LDR](https://tuelectronica.es/fotocelda-control-de-dispositivos-con-la-luz/)
+* Humedad de sustrato:
 
 ## Actuadores:
 > Son aquellos dispositivos capaces de transformar la energía hidráulica, neumática o eléctrica en la activación de procesos con la finalidad de generar un efecto sobre un proceso automatizado. Este recibe la orden de un regulador o controlador y en función a ella genera la orden para activar un elemento final de control.
 
 ### Actuadores a utilizar:
-* Rele.
+* Reley Godos 831A: [Relay](https://www.datasheet.live/index.php?title=Special:PdfViewer&url=https%3A%2F%2Fpdf.datasheet.live%2F1f8815ae%2Fdatasheet.directory%2F831A-8.pdf)
 *
-*
+
 
 
