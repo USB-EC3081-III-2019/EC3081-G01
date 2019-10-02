@@ -16,6 +16,10 @@
 
 ### Sensores a utilizar:
 * Humedad y Temperatura (DHT11): [DHT11](https://naylampmechatronics.com/sensores-temperatura-y-humedad/57-sensor-de-temperatura-y-humedad-relativa-dht11.html)
+>>  El DHT11 es un sensor digital de temperatura y humedad relativa de bajo costo y fácil uso. Integra un sensor capacitivo de humedad y un termistor para medir el aire circundante, y muestra los datos mediante una señal digital en el pin de datos (no posee salida analógica). Utilizado en aplicaciones académicas relacionadas al control automático de temperatura, aire acondicionado, monitoreo ambiental en agricultura y más.
+
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/DHT11.png">
+
 * Fotocelda (LDR): [LDR](https://tuelectronica.es/fotocelda-control-de-dispositivos-con-la-luz/)
 >>  Una fotocelda es un dispositivo electrónico que es capaz de producir una pequeña cantidad de corriente eléctrica al ser expuesta a la luz, este dispositivo está compuesto por una fotorresistencia o resistencia LDR (componente electrónico que varía su resistencia con la luz) la cual está fabricada con un material que reacciona a la luz, de esta manera cuando este material recibe la luz cambia su resistividad.  Recordar no confundir la fotocelda con la fotorresistencia LDR, son conceptos diferentes. El primero es un dispositivo de control, y el segundo es un componente fotosensor que permite el funcionamiento del primero. 
 
