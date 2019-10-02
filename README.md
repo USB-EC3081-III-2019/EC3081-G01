@@ -25,14 +25,9 @@
 
 >><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/foto_celda.jpg"><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/fotorresistenciaLDR.png">
 
-* Sensor de humedad HS110LF:
->> El HS110LF es un sensor de humedad relativa, basado en una célula capacitiva única, diseñado para altas medidas. Consta de aplicaciones sensibles, tales como la automatización de oficinas, control de aire de la cabina de la automoción, electrodomésticos y los sistemas de control de procesos industriales.  También son útiles en todas las aplicaciones donde se necesita una compensación de la humedad.
-
->>Los sensores capacitivos son apropiados para ambiente de alta temperatura porque el coeficiente de temperatura es bajo y el polímero dieléctrico puede soportar altas temperaturas. Estos sensores capacitivos son también apropiados para aplicaciones que requieran un alto grado de sensibilidad a niveles bajos de humedad, donde proveen unarespuesta relativamente rápida.
-
->> <img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/HS1101LF.png">
-
-* Humedad de sustrato:
+* Sensor de humedad de suelo:
+>>  El sensor de humedad sera capaz de establecer si el suelo esta humedo o seco, al no disponer de sesores de Humedad de sustrato en el laboratorio procederemos a crear nuestro propio sensor de humedad del suelo, tomando como base un video sencillo que le mostraremos ac continuacion.
+https://www.youtube.com/watch?v=8Sbl-Od3x8s
 
 ## Actuadores:
 > Son aquellos dispositivos capaces de transformar la energía hidráulica, neumática o eléctrica en la activación de procesos con la finalidad de generar un efecto sobre un proceso automatizado. Este recibe la orden de un regulador o controlador y en función a ella genera la orden para activar un elemento final de control.
