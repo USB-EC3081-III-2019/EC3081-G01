@@ -88,16 +88,28 @@ void LCD_Configuracion_Inicial ()
                         //2.Si se mueve o no se mueve la pantalla
     LCD_Comando(0x0C);  //Display ON/OFF Cntrl
     LCD_Comando(0x0C);  //1.Enciende lapantalla 2. apaga el cursor 3. no hace que titilee el cursor
+
 }
 
 void PIC_Configuracion_Inicial ()
 {
+    
     TRISD = 0;
     TRISCbits.TRISC0 = 0;
     TRISCbits.TRISC1 = 0;
     TRISA = 0;
     ADCON0 = 0b00000000;
     INTCON = 0;
+    
+    TRISB = 0B11110000;
+        
+    INTCON = 0;
+    INTCONbits.RBIE = 1;
+    INTCONbits.GIE = 1;
+    
+    OPTION_REGbits.nRBPU = 0;
+    
+    
 }; 
 
 void LCD_Cursor (int h , int v)
@@ -142,3 +154,49 @@ void LCD_Display (int T, int H)
     }
 
 }
+
+void interrupt high_priority Interrupcion_Teclado (void)
+{
+
+if (RBIF)
+{
+    if (PORTBbits.RB7 == 0)
+    {
+        LCD_Comando(0X01);
+        __delay_ms(2);
+       // LCD_Escribir_Cadena("* 0 #");
+        
+        if (PORTBbits.RB3 == 0 && PORTBbits.RB2 == 1 && PORTBbits.RB1 == 0)
+        {
+            LCD_Escribir('0');
+        }
+        //if (PORTBbits.RB2 == 0)
+        //if (PORTBbits.RB1 == 0)
+    }
+    
+    if (PORTBbits.RB6 == 0)
+    {
+        LCD_Comando(0X01);
+        __delay_ms(2);
+        LCD_Escribir_Cadena("7 8 9 ");
+    }
+    
+    if (PORTBbits.RB5 == 0)
+    {
+        LCD_Comando(0X01);
+        __delay_ms(2);
+        LCD_Escribir_Cadena("4 5 6");
+    }
+    
+        if (PORTBbits.RB4 == 0)
+    {
+        LCD_Comando(0X01);
+        __delay_ms(2);
+        LCD_Escribir_Cadena("1 2 3");
+    }
+}
+    RBIF=0;
+    
+}
+
+
