@@ -36,5 +36,11 @@ https://www.youtube.com/watch?v=8Sbl-Od3x8s
 * Reley Godos 831A: [Relay](https://www.datasheet.live/index.php?title=Special:PdfViewer&url=https%3A%2F%2Fpdf.datasheet.live%2F1f8815ae%2Fdatasheet.directory%2F831A-8.pdf)
 *
 
+### Diagrama de flujo tentativo:
+
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/EC3081-G01 DF.png">
+
+
+
 
 
