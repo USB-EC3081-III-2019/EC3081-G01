@@ -102,15 +102,21 @@ void PIC_Configuracion_Inicial ()
     INTCON = 0;
     
     TRISB = 0B11110000;
-        
-    INTCON = 0;
-    INTCONbits.RBIE = 1;
-    INTCONbits.GIE = 1;
+   
+    /////////////////////////////////
     
-    OPTION_REGbits.nRBPU = 0;
+    OPTION_REGbits.nRBPU = 0; //Activa Pull up
     
+    PORTBbits.RB1 = 1;// RB0 a RB2 los pone en 111
+    PORTBbits.RB2 = 1;
+    PORTBbits.RB3 = 1;
     
-}; 
+    INTCON = 0; // Limpia Registro INICON
+    INTCONbits.RBIE = 1; //Habilita Interrupciones del RB4 al RB7
+    INTCONbits.GIE = 1; // Habiita Interrupciones Gobales
+    INTCONbits.RBIF=0; // Bandera de Interrupciones del RB4 al RB7 a 0
+    
+} 
 
 void LCD_Cursor (int h , int v)
 {
@@ -154,49 +160,4 @@ void LCD_Display (int T, int H)
     }
 
 }
-
-void interrupt high_priority Interrupcion_Teclado (void)
-{
-
-if (RBIF)
-{
-    if (PORTBbits.RB7 == 0)
-    {
-        LCD_Comando(0X01);
-        __delay_ms(2);
-       // LCD_Escribir_Cadena("* 0 #");
-        
-        if (PORTBbits.RB3 == 0 && PORTBbits.RB2 == 1 && PORTBbits.RB1 == 0)
-        {
-            LCD_Escribir('0');
-        }
-        //if (PORTBbits.RB2 == 0)
-        //if (PORTBbits.RB1 == 0)
-    }
-    
-    if (PORTBbits.RB6 == 0)
-    {
-        LCD_Comando(0X01);
-        __delay_ms(2);
-        LCD_Escribir_Cadena("7 8 9 ");
-    }
-    
-    if (PORTBbits.RB5 == 0)
-    {
-        LCD_Comando(0X01);
-        __delay_ms(2);
-        LCD_Escribir_Cadena("4 5 6");
-    }
-    
-        if (PORTBbits.RB4 == 0)
-    {
-        LCD_Comando(0X01);
-        __delay_ms(2);
-        LCD_Escribir_Cadena("1 2 3");
-    }
-}
-    RBIF=0;
-    
-}
-
 
