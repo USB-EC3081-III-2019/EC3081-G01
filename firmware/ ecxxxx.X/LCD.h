@@ -99,7 +99,6 @@ void PIC_Configuracion_Inicial ()
     TRISCbits.TRISC1 = 0;
     TRISA = 0;
     ADCON0 = 0b00000000;
-    INTCON = 0;
     
     TRISB = 0B11110000;
    
@@ -107,14 +106,16 @@ void PIC_Configuracion_Inicial ()
     
     OPTION_REGbits.nRBPU = 0; //Activa Pull up
     
-    PORTBbits.RB1 = 1;// RB0 a RB2 los pone en 111
-    PORTBbits.RB2 = 1;
-    PORTBbits.RB3 = 1;
+    //PORTBbits.RB1 = 1;// RB1 a RB3 los pone en 111
+    //PORTBbits.RB2 = 1;
+    //PORTBbits.RB3 = 1;
     
+    PORTB = 0;
+    RBIF = 0; // Bandera de Interrupciones del RB4 al RB7 a 0
     INTCON = 0; // Limpia Registro INICON
     INTCONbits.RBIE = 1; //Habilita Interrupciones del RB4 al RB7
     INTCONbits.GIE = 1; // Habiita Interrupciones Gobales
-    INTCONbits.RBIF=0; // Bandera de Interrupciones del RB4 al RB7 a 0
+     
     
 } 
 
@@ -160,4 +161,3 @@ void LCD_Display (int T, int H)
     }
 
 }
-
