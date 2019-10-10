@@ -15,21 +15,15 @@
 
 void main ()
 {
-    
-while(1)
-{
     PIC_Configuracion_Inicial();
     LCD_Configuracion_Inicial();
     
     
-    int Horizontal, Vertical, C, C1;
+    int Horizontal, Vertical, C, C1, k=1,i;
     
-    char aux[]="1#ORAZIO PORTILLO";
-    char aux1[]="1#BENSEDI ACOSTA";
+    char aux[]="NUMERO:";
+    char aux1[]="(#PARA BORRAR)";
       
-    PIC_Configuracion_Inicial();
-    LCD_Configuracion_Inicial();
-   
     C = LCD_Contador(aux); 
     
     Horizontal = 0;
@@ -43,39 +37,34 @@ while(1)
     ///////////////////////
     
     C1 = LCD_Contador(aux) + LCD_Contador(aux1);
-    
+  
     Horizontal = -C-Horizontal;
     Vertical = 2; // 1 Arriba, 2 Abajo
     
     LCD_Cursor(Horizontal, Vertical);
     
     LCD_Escribir_Cadena(aux1);
-
+    
+    for(i=0;i<(40-LCD_Contador(aux1)+ LCD_Contador(aux));i++)//Escribe al final de la palabra NUMERO
+        {
+             __delay_us(40);
+            LCD_Comando(0x14);
+        }
 
         //LCD_Display(C,0);
         //LCD_Display(C1,0);
 
-    while (1)
-    {
-        int c;
-        
-        for(c=1 ; c<4 ; c++)
-        {
-            PORTB&=~(1<<c);//011 101 110
-            PORTB|=(1<<c);
-        }
-    }
-    
-        
-    /*while(1)
+
+    //LCD_Escribir_Cadena("Hola")   
+    while(1)
     {
         __delay_ms(500);
         PORTAbits.RA0 = 1;
         __delay_ms(500);
         PORTAbits.RA0 = 0;
         
-    }¨*/
-}
+    }
+
 }
 
 
