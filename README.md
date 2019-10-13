@@ -26,7 +26,8 @@
 >><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/foto_celda.jpg"><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/fotorresistenciaLDR.png">
 
 * Sensor de humedad de suelo:
->>  El sensor de humedad sera capaz de establecer si el suelo esta humedo o seco, al no disponer de sesores de Humedad de sustrato en el laboratorio procederemos a crear nuestro propio sensor de humedad del suelo, tomando como base un video sencillo que le mostraremos ac continuacion.
+>>  El sensor de humedad sera capaz de establecer si el suelo esta humedo o seco, al no disponer de sesores de Humedad de sustrato en el laboratorio procederemos a crear nuestro propio sensor de humedad del suelo, tomando como base un video sencillo. Del cual logramos obtener nuestro circuito detector de humedad.
+>><img src = "https://github.com/USB-EC3081-III-2019/EC3081 G01/blob/master/docs/Circuito%20Detector%20de%20Humedad%20de%20la%20tierra.png">
 https://www.youtube.com/watch?v=8Sbl-Od3x8s
 
 ## Actuadores:
