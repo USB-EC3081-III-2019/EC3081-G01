@@ -48,6 +48,18 @@
 
 >><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/RelayGodos831A.png">
 
+#### * Electroválvulas: [Electroválvas](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Electrov%C3%A1lvulas%20.pdf)
+
+>> Son dispositivos creados para regular el Flujo (On / Off) de un fluido, estan diseñadas para poder usarse con agua, gas, aire, gas combustible, entre otros. Pueden ser de dos hasta cinco vias. Dependiendo el fluido que se valla a utilizar es el material de la válvula.
+
+>><img src="">
+
+#### * Servomotor: [Electroválvas](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/servomotor.pdf)
+
+>> Son dispositivos de accionamiento para el control de precision de velicidad, par motor y precison. Constituye un mejor desempeño de precision ante accionamientos mediante convertidores de frecuencia.
+
+>><img src="">
+
 
 ### Diagrama de flujo tentativo:
 
