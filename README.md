@@ -15,20 +15,26 @@
 > Son aquellos dispositivos que están capacitados para detectar acciones o estímulos externos y responder en consecuencia de dichos estímulos. Es decir, nos permiten captar la información del medio físico que nos rodea. Se encarga de medir las magnitudes físicas y transformarlas en señales eléctricas capaces de ser medidas por un microcontrolador y ser utilizadas posteriormente.
 
 ### Sensores a utilizar:
-* Humedad y Temperatura (DHT11): [DHT11](https://naylampmechatronics.com/sensores-temperatura-y-humedad/57-sensor-de-temperatura-y-humedad-relativa-dht11.html)
+#### * Humedad y Temperatura (DHT11): [DHT11](https://naylampmechatronics.com/sensores-temperatura-y-humedad/57-sensor-de-temperatura-y-humedad-relativa-dht11.html)
 >>  El DHT11 es un sensor digital de temperatura y humedad relativa de bajo costo y fácil uso. Integra un sensor capacitivo de humedad y un termistor para medir el aire circundante, y muestra los datos mediante una señal digital en el pin de datos (no posee salida analógica). Utilizado en aplicaciones académicas relacionadas al control automático de temperatura, aire acondicionado, monitoreo ambiental en agricultura y más.
 
 >><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/DHT11.png">
 
-* Fotocelda (LDR): [LDR](https://tuelectronica.es/fotocelda-control-de-dispositivos-con-la-luz/)
+#### * Fotocelda (LDR): [LDR](https://tuelectronica.es/fotocelda-control-de-dispositivos-con-la-luz/)
 >>  Una fotocelda es un dispositivo electrónico que es capaz de producir una pequeña cantidad de corriente eléctrica al ser expuesta a la luz, este dispositivo está compuesto por una fotorresistencia o resistencia LDR (componente electrónico que varía su resistencia con la luz) la cual está fabricada con un material que reacciona a la luz, de esta manera cuando este material recibe la luz cambia su resistividad.  Recordar no confundir la fotocelda con la fotorresistencia LDR, son conceptos diferentes. El primero es un dispositivo de control, y el segundo es un componente fotosensor que permite el funcionamiento del primero. 
 
 >><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/foto_celda.jpg"><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/fotorresistenciaLDR.png">
 
-* Sensor de humedad de suelo:
->>  El sensor de humedad sera capaz de establecer si el suelo esta humedo o seco, al no disponer de sesores de Humedad de sustrato en el laboratorio procederemos a crear nuestro propio sensor de humedad del suelo, tomando como base un video sencillo. Del cual logramos obtener nuestro circuito detector de humedad.
->><img src = "https://github.com/USB-EC3081-III-2019/EC3081 G01/blob/master/docs/Circuito%20Detector%20de%20Humedad%20de%20la%20tierra.png">
-https://www.youtube.com/watch?v=8Sbl-Od3x8s
+#### * Sensor de humedad de suelo:
+>>  El sensor de humedad sera capaz de establecer si el suelo esta humedo o seco, al no disponer de sesores de Humedad de sustrato en el laboratorio procederemos a crear nuestro propio sensor de humedad del suelo, tomando como base un video sencillo. Del cual logramos obtener nuestro circuito detector de humedad. 
+
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Circuito%20Detector%20de%20Humedad%20de%20la%20tierra.png">
+
+>> Para este circuito nos basamos del siguiente video : https://www.youtube.com/watch?v=8Sbl-Od3x8s Donde la resistencia variable "TIERRRA" Termina representando la terra del video, mostrado.
+
+#### * Sensor detector de lluvia: [Detector de lluvia](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia%20con%20dos%20transistores.pdf)
+
+>> Este sensor sera capaz de detectar si ha empezado a llover fiera de nuestro invernadero con la finalidad de activar las ventanas superiores para que se rieguenlas plantas con el agua de la lluvia. Este sensor al igual que el detector de humedad del suelo, deberemos crearlo ya que no poseemos el sensor necesario para el mismo.
 
 ## Actuadores:
 > Son aquellos dispositivos capaces de transformar la energía hidráulica, neumática o eléctrica en la activación de procesos con la finalidad de generar un efecto sobre un proceso automatizado. Este recibe la orden de un regulador o controlador y en función a ella genera la orden para activar un elemento final de control.
