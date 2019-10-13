@@ -42,10 +42,12 @@
 > Son aquellos dispositivos capaces de transformar la energía hidráulica, neumática o eléctrica en la activación de procesos con la finalidad de generar un efecto sobre un proceso automatizado. Este recibe la orden de un regulador o controlador y en función a ella genera la orden para activar un elemento final de control.
 
 ### Actuadores a utilizar:
-#### * Reley Godos 831A: [Relay]()
+#### * Reley Godos 831A: [Relay](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Relay_Gordoa_831A-1.pdf)
 
->><img src= "https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/RelayGodos831A.png">
-*
+>> Es un aparato eléctrico que funciona como un interruptor, abrir y cerrar el paso de la corriente eléctrica, pero accionado eléctricamente. El relé permite abrir o cerrar contactos mediante un electroimán, por eso también se llaman relés electromagnéticos o relevador.
+
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/RelayGodos831A.png">
+
 
 ### Diagrama de flujo tentativo:
 
