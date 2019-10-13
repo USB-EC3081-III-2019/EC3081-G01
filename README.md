@@ -36,11 +36,15 @@
 
 >> Este sensor sera capaz de detectar si ha empezado a llover fiera de nuestro invernadero con la finalidad de activar las ventanas superiores para que se rieguenlas plantas con el agua de la lluvia. Este sensor al igual que el detector de humedad del suelo, deberemos crearlo ya que no poseemos el sensor necesario para el mismo.
 
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia.png">
+
 ## Actuadores:
 > Son aquellos dispositivos capaces de transformar la energía hidráulica, neumática o eléctrica en la activación de procesos con la finalidad de generar un efecto sobre un proceso automatizado. Este recibe la orden de un regulador o controlador y en función a ella genera la orden para activar un elemento final de control.
 
 ### Actuadores a utilizar:
-* Reley Godos 831A: [Relay](https://www.datasheet.live/index.php?title=Special:PdfViewer&url=https%3A%2F%2Fpdf.datasheet.live%2F1f8815ae%2Fdatasheet.directory%2F831A-8.pdf)
+#### * Reley Godos 831A: [Relay]()
+
+>><img src= "https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/RelayGodos831A.png">
 *
 
 ### Diagrama de flujo tentativo:
