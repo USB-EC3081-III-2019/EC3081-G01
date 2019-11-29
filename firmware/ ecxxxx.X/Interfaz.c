@@ -1,940 +1,51 @@
 #include <xc.h>
 #include "LCD.h"
 #include "DHT11.h"
+#include "S_Hum_Suelo.h"
+#include "LDR.h"
+
 
 #define _XTAL_FREQ 4000000
 
-extern unsigned int H, V, c, z, tecla, x, j;
+extern unsigned int H, V, c, z, tecla, x, j,j1;
 extern unsigned int Temp_Hum, Hum_Suelo, Lluvia, Luz;
-extern unsigned char T_Byte1, T_Byte2, RH_Byte1, RH_Byte2, CheckSum;
-
-void C1_0() {
-    ///////////CONFIGURACIONES 1////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1. Configuracion");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("1. Configuracion") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("2. Consulta Sens.");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-
-
-}
-
-void C2_0() {
-
-    ///////////////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("3. Sist. Autom.");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("3. Sist. Autom.") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("4. Sist. Manual");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-
-}
-
-void C1_1() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1. C. Sensores");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("1. C. Sensores") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("2. C. Humbral");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_2() {
-    ///////////////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("*. Regresar");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_1() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("¿Que sensores");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("¿Que sensores") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("desea utilizar?");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_2() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1. S. Temp./Hum.");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("1. S. Temp./Hum.") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("2. S. Hum. Suelo");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_3() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("3. S. Lluvia");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("3. S. Lluvia") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("4. S. Luz");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_4() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 0;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("*. Regresar");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_1_1() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 2;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Temp./Hum.");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Temp./Hum.") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1. SI      2. NO");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_1_2() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 2;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Temp./Hum.");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Temp./Hum.") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ENCENDIDOS)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_1_3() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 2;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Temp./Hum.");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Temp./Hum.") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(APAGADOS)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_2_1() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 2;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Hum. Suelo");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Hum. Suelo") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1. SI      2. NO");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_2_2() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 2;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Hum. Suelo");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Hum. Suelo") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ENCENDIDO)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_2_3() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 2;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Hum. Suelo");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Hum. Suelo") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(APAGADO)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_3_1() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Lluvia");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Lluvia") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1. SI      2. NO");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_3_2() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Lluvia");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Lluvia") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ENCENDIDO)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_3_3() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Lluvia");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Lluvia") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(APAGADO)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_4_1() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 5;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Luz");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Luz") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1. SI      2. NO");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_4_2() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 5;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Luz");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Luz") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ENCENDIDO)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C1_1_4_3() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 5;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("S. Luz");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("S. Luz") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(APAGADO)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void INTERFACE_Bienvenida() {
-    ///////////BIENVENIDOS////////////
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("BIENVENIDOS");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("BIENVENIDOS") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Sistema de Riego");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C3_0(){
-    LCD_Comando(0x01); //Clear Display
-
-    H = 4;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("¿Llueve?");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("¿Llueve?") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Si(?)      No(?)");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C3_1(){
-    LCD_Comando(0x01); //Clear Display
-    
-    H = 4;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Ventanas");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Ventanas") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ABIERTAS)");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C3_2(){
-    LCD_Comando(0x01); //Clear Display
-        
-    H = 4;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Ventanas");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Ventanas") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(CERRADAS)");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C3_3(){
-    LCD_Comando(0x01); //Clear Display
-
-    H = 1;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("¿Tierra Humeda?");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("¿Tierra Humeda?") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Si(?)      No(?)");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C3_4(){
-    LCD_Comando(0x01); //Clear Display
-    
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Aspersores");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Aspersores") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 2;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ENCENDIDOS)");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C3_5(){
-    LCD_Comando(0x01); //Clear Display
-        
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Aspersores");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Aspersores") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(APAGADOS)");
-
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C4_0() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Aspersores");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Aspersores") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1.On       2.Off");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C4_1() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Aspersores");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Aspersores") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ENCENDIDOS)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C4_2() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Aspersores");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Aspersores") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(APAGADOS)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C4_3() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 4;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Ventanas");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Ventanas") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 0;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("1.On       2.Off");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C4_4() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 4;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Ventanas");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Ventanas") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(ABIERTAS)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
-
-void C4_5() {
-    ///////////CONFIGURACIONES////////////
-
-    LCD_Comando(0x01); //Clear Display
-
-    H = 3;
-    V = 1;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("Ventanas");
-
-
-    ///////////////////////
-
-    c = LCD_Contador("Ventanas") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
-
-    H = 3;
-    V = 2;
-
-    LCD_Cursor(H, V); // (Horizontal, Vertical)
-    LCD_Escribir_Cadena("(CERRADAS)");
-    for (z = 0; z < 100; z++) {
-        if (tecla == 0) {
-            __delay_ms(20);
-        }
-    }
-}
+extern unsigned char T_Byte1, T_Byte2, RH_Byte1, RH_Byte2, CheckSum, Tierra_Humeda;
 
 void INTERFACE_Configuracion_1_Temp_Hum() {
     tecla = 0;
     j = 0;
-    Temp_Hum = 0;// Lo sefine el sensor
+    Temp_Hum = 0; // Lo sefine el sensor
 
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C1_1_1_1();
+
+                LCD_Escribir_C1(2, 1, "S. Temp./Hum.");
+                LCD_Escribir_C2(2, 0, "S. Temp./Hum.", "1. SI      2. NO");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 tecla = 0;
-                C1_1_1_2();
+
+                LCD_Escribir_C1(2, 1, "S. Temp./Hum.");
+                LCD_Escribir_C2(2, 3, "S. Temp./Hum.", "(ENCENDIDOS)");
+
+                LCD_Timer();
+
                 Temp_Hum = 1;
                 x = 0;
                 j = 1;
                 break;
             case (2):
                 tecla = 0;
-                C1_1_1_3();
+
+                LCD_Escribir_C1(2, 1, "S. Temp./Hum.");
+                LCD_Escribir_C2(2, 3, "S. Temp./Hum.", "(APAGADOS)");
+
+                LCD_Timer();
+
                 Temp_Hum = 0;
                 x = 0;
                 j = 1;
@@ -951,23 +62,38 @@ void INTERFACE_Configuracion_1_Temp_Hum() {
 void INTERFACE_Configuracion_1_Hum_Suelo() {
     tecla = 0;
     j = 0;
-    Hum_Suelo = 0;// Lo define el sensor
+    Hum_Suelo = 0; // Lo define el sensor
 
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C1_1_2_1();
+
+                LCD_Escribir_C1(2, 1, "S. Hum. Suelo");
+                LCD_Escribir_C2(2, 0, "S. Hum. Suelo", "1. SI      2. NO");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 tecla = 0;
-                C1_1_2_2();
+
+                LCD_Escribir_C1(2, 1, "S. Hum. Suelo");
+                LCD_Escribir_C2(2, 3, "S. Hum. Suelo", "(ENCENDIDO)");
+
+                LCD_Timer();
+
                 Hum_Suelo = 1;
                 x = 0;
                 j = 1;
                 break;
             case (2):
                 tecla = 0;
-                C1_1_2_3();
+
+                LCD_Escribir_C1(2, 1, "S. Hum. Suelo");
+                LCD_Escribir_C2(2, 3, "S. Hum. Suelo", "(APAGADO)");
+
+                LCD_Timer();
+
                 Hum_Suelo = 0;
                 x = 0;
                 j = 1;
@@ -989,18 +115,33 @@ void INTERFACE_Configuracion_1_Lluvia() {
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C1_1_3_1();
+
+                LCD_Escribir_C1(3, 1, "S. Lluvia");
+                LCD_Escribir_C2(3, 0, "S. Lluvia", "1. SI      2. NO");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 tecla = 0;
-                C1_1_3_2();
-                Lluvia = 1; 
+
+                LCD_Escribir_C1(3, 1, "S. Lluvia");
+                LCD_Escribir_C2(3, 3, "S. Lluvia", "(ENCENDIDO)");
+
+                LCD_Timer();
+
+                Lluvia = 1;
                 x = 0;
                 j = 1;
                 break;
             case (2):
                 tecla = 0;
-                C1_1_3_3();
+
+                LCD_Escribir_C1(3, 1, "S. Lluvia");
+                LCD_Escribir_C2(3, 3, "S. Lluvia", "(APAGADO)");
+
+                LCD_Timer();
+
                 Lluvia = 0;
                 x = 0;
                 j = 1;
@@ -1022,18 +163,33 @@ void INTERFACE_Configuracion_1_Luz() {
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C1_1_4_1();
+
+                LCD_Escribir_C1(5, 1, "S. Luz");
+                LCD_Escribir_C2(5, 0, "S. Luz", "1. SI      2. NO");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 tecla = 0;
-                C1_1_4_2();
+
+                LCD_Escribir_C1(5, 1, "S. Luz");
+                LCD_Escribir_C2(5, 3, "S. Luz", "(ENCENDIDO)");
+
+                LCD_Timer();
+
                 Luz = 1;
                 x = 0;
                 j = 1;
                 break;
             case (2):
                 tecla = 0;
-                C1_1_4_3();
+
+                LCD_Escribir_C1(5, 1, "S. Luz");
+                LCD_Escribir_C2(5, 4, "S. Luz", "(APAGADO)");
+
+                LCD_Timer();
+
                 Luz = 0;
                 x = 0;
                 j = 1;
@@ -1054,22 +210,42 @@ void INTERFACE_Configuracion_1() {
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C1_1_1();
+
+                LCD_Escribir_C1(0, 1, "¿Que sensores");
+                LCD_Escribir_C2(0, 0, "¿Que sensores", "desea utilizar?");
+
+                LCD_Timer();
+
                 if (tecla == 1) {
                     break;
                 }
-                C1_1_2();
+
+                LCD_Escribir_C1(0, 1, "1. S. Temp./Hum.");
+                LCD_Escribir_C2(0, 0, "1. S. Temp./Hum.", "2. S. Hum. Suelo");
+
+                LCD_Timer();
+
                 if (tecla == 1) {
                     break;
                 }
-                C1_1_3();
+
+                LCD_Escribir_C1(0, 1, "3. S. Lluvia");
+                LCD_Escribir_C2(0, 0, "3. S. Lluvia", "4. S. Luz");
+
+                LCD_Timer();
+
                 if (tecla == 1) {
                     break;
                 }
-                C1_1_4();
+
+                LCD_Escribir_C1(0, 1, "*. Regresar");
+
+                LCD_Timer();
+
                 if (tecla == 1) {
                     break;
                 }
+
                 break;
             case (1):
                 INTERFACE_Configuracion_1_Temp_Hum();
@@ -1109,11 +285,11 @@ Neutro() {
 void C2_1() {
 
     extern unsigned char temp1, temp2;
-    char Temperature[] = "Temp. Max: 00 C ";
+    char Temperature[] = "Temp. Max: 20 C ";
     tecla = 0;
     j = 0;
     temp1 = '0';
-    temp2 = '0';
+    temp2 = '2';
 
     LCD_Comando(0x01);
     while (j == 0) {
@@ -1125,13 +301,13 @@ void C2_1() {
                 Temperature[15] = 223; // put degree symbol (°)
                 LCD_Escribir_Cadena(Temperature);
 
-                c = LCD_Contador("Temp. Max: 00 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
+                c = LCD_Contador("Temp. Max: 20 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
 
                 H = 0;
                 V = 2;
 
                 LCD_Cursor(H, V); // (Horizontal, Vertical)
-                LCD_Escribir_Cadena("2.+   5.OK   8.-");
+                LCD_Escribir_Cadena("2(+) 5 (OK) 8(-)");
                 break;
 
             case(2):
@@ -1150,13 +326,13 @@ void C2_1() {
 
                 LCD_Escribir_Cadena(Temperature);
 
-                c = LCD_Contador("Temp. Max: 00 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
+                c = LCD_Contador("Temp. Max: 20 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
 
                 H = 0;
                 V = 2;
 
                 LCD_Cursor(H, V); // (Horizontal, Vertical)
-                LCD_Escribir_Cadena("2.+   5.OK   8.-");
+                LCD_Escribir_Cadena("2(+) 5 (OK) 8(-)");
 
                 tecla = 0;
                 j = 0;
@@ -1164,7 +340,7 @@ void C2_1() {
 
             case(8):
 
-                if (temp1 >= '0' && temp2 > '/') {
+                if (temp1 >= '0' && temp2 > '1') {
                     LCD_Comando(0x01);
 
                     Temperature[12] = temp1 - 1;
@@ -1182,13 +358,13 @@ void C2_1() {
 
                     LCD_Escribir_Cadena(Temperature);
 
-                    c = LCD_Contador("Temp. Max: 00 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
+                    c = LCD_Contador("Temp. Max: 20 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
 
                     H = 0;
                     V = 2;
 
                     LCD_Cursor(H, V); // (Horizontal, Vertical)
-                    LCD_Escribir_Cadena("2.+   5.OK   8.-");
+                    LCD_Escribir_Cadena("2(+) 5 (OK) 8(-)");
                 }
 
 
@@ -1211,6 +387,107 @@ void C2_1() {
 }
 
 void C2_2() {
+
+    extern unsigned char temp1, temp2;
+    char Temperature[] = "Temp. Max: 20 C ";
+    tecla = 0;
+    j = 0;
+    temp1 = '0';
+    temp2 = '2';
+
+    LCD_Comando(0x01);
+    while (j == 0) {
+        switch (tecla) {
+            case(0):
+                ///////////CONFIGURACIONES////////////
+                LCD_Comando(0x01);
+
+                Temperature[15] = 223; // put degree symbol (°)
+                LCD_Escribir_Cadena(Temperature);
+
+                c = LCD_Contador("Temp. Min: 20 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
+
+                H = 0;
+                V = 2;
+
+                LCD_Cursor(H, V); // (Horizontal, Vertical)
+                LCD_Escribir_Cadena("2(+) 5 (OK) 8(-)");
+                break;
+
+            case(2):
+                LCD_Comando(0x01);
+
+                Temperature[12] = temp1 + 1;
+                temp1 = Temperature[12];
+
+                if (temp1 == ':') {
+
+                    Temperature[11] = temp2 + 1;
+                    temp2 = Temperature[11];
+                    temp1 = '0';
+                    Temperature[12] = temp1;
+                }
+
+                LCD_Escribir_Cadena(Temperature);
+
+                c = LCD_Contador("Temp. Min: 20 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
+
+                H = 0;
+                V = 2;
+
+                LCD_Cursor(H, V); // (Horizontal, Vertical)
+                LCD_Escribir_Cadena("2(+) 5 (OK) 8(-)");
+
+                tecla = 0;
+                j = 0;
+                break;
+
+            case(8):
+
+                if (temp1 >= '0' && temp2 > '1') {
+                    LCD_Comando(0x01);
+
+                    Temperature[12] = temp1 - 1;
+                    temp1 = Temperature[12];
+
+
+                    if (temp1 == '/') {
+
+                        Temperature[11] = temp2 - 1;
+                        temp2 = Temperature[11];
+                        temp1 = '9';
+                        Temperature[12] = temp1;
+
+                    }
+
+                    LCD_Escribir_Cadena(Temperature);
+
+                    c = LCD_Contador("Temp. Min: 20 C ") + H; //Se cuenta el numero de caracteres que tiene a primera linea para que la siguiente linea quede en el lugar que se desea
+
+                    H = 0;
+                    V = 2;
+
+                    LCD_Cursor(H, V); // (Horizontal, Vertical)
+                    LCD_Escribir_Cadena("2(+) 5 (OK) 8(-)");
+                }
+
+
+
+                tecla = 0;
+                j = 0;
+                break;
+
+            case(5):
+                j = 1;
+                break;
+        }
+
+        for (z = 0; z < 100; z++) {
+            if (tecla == 0) {
+                __delay_ms(20);
+            }
+        }
+    }
 
 }
 
@@ -1284,11 +561,20 @@ void INTERFACE_Configuracion() {
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C1_1();
+
+                LCD_Escribir_C1(0, 1, "1. C. Sensores");
+                LCD_Escribir_C2(0, 0, "1. C. Sensores", "2. C. Humbral");
+
+                LCD_Timer();
+
                 if (tecla == 1) {
                     break;
                 }
-                C1_2();
+
+                LCD_Escribir_C1(0, 1, "*. Regresar");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 INTERFACE_Configuracion_1();
@@ -1317,95 +603,122 @@ void INTERFACE_Consulta_Sensores() {
                 LCD_Comando(0x01); //Clear Display
                 if (Temp_Hum == 1) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Temp_Hum = 1");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    DHT11();
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
                     tecla = 1;
+                    break;
                 }
                 if (Temp_Hum == 0) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Temp_Hum = 0");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    LCD_Escribir_Cadena("Temp_Hum = Off");
+                    
+                    LCD_Timer();
+                    
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
                     tecla = 1;
+                    break;
                 }
             case(1):
                 LCD_Comando(0x01); //Clear Display
                 if (Hum_Suelo == 1) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Hum_Suelo = 1");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    LCD_Escribir_Cadena("Hum_Suelo = On");
+
+                    LCD_Timer();
+                    
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
-                    tecla = 2;                   
+                    tecla = 2;
+                    break;
                 }
                 if (Hum_Suelo == 0) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Hum_Suelo = 0");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    LCD_Escribir_Cadena("Hum_Suelo = Off");
+
+                    LCD_Timer();
+                    
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
-                    tecla = 2;      
+                    tecla = 2;
+                    break;
                 }
             case (2):
                 LCD_Comando(0x01); //Clear Display
                 if (Lluvia == 1) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Lluvia = 1");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    LCD_Escribir_Cadena("Lluvia = On");
+
+                    LCD_Timer();
+                    
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
-                    tecla = 3; 
+                    tecla = 3;
+                    break;
                 }
                 if (Lluvia == 0) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Lluvia = 0");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    LCD_Escribir_Cadena("Lluvia = Off");
+
+                    LCD_Timer();
+                    
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
                     tecla = 3;
+                    break;
                 }
             case (3):
                 LCD_Comando(0x01); //Clear Display
                 if (Luz == 1) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Luz = 1");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    Fotocelda();
+
+                    LCD_Timer();
+                    
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
-                    x = 0;
-                    j = 1;
+                    tecla = 4;
+                    break;
                 }
                 if (Luz == 0) {
                     tecla = 0;
-                    LCD_Escribir_Cadena("Luz = 0");
-                    for (z = 0; z < 100; z++) {
-                        if (tecla == 0) {
-                            __delay_ms(20);
-                        }
+                    LCD_Escribir_Cadena("Luz = Off");
+
+                    LCD_Timer();
+                    
+                    if (tecla == 10) {
+                        x = 0;
+                        j = 1;
                     }
+                    tecla = 4;
+                    break;
+                }
+            case (4):
+                tecla = 0;
+                LCD_Escribir_C1(1, 1, "Si desea salir");
+                LCD_Escribir_C2(1, 2, "Si desea salir", "PRESIONE (*)");
+
+                LCD_Timer();
+                
+                if (tecla == 10) {
                     x = 0;
                     j = 1;
                 }
-            case(10):
-                x = 0;
-                j = 1;
                 break;
         }
     }
@@ -1413,14 +726,22 @@ void INTERFACE_Consulta_Sensores() {
 
 void INTERFACE_Sistema_Automatico_Llueve() {
     tecla = 0;
-    j = 0;
-    int lluvia = 1;//Esto lo define el sensor
+    j1 = 0;
+    int lluvia = 1; //Esto lo define el sensor
 
-    while (j == 0) {
+    while (j1 == 0) {
         switch (tecla) {
             case (0):
-                C3_0();
-                
+
+                LCD_Escribir_C1(4, 1, "¿Llueve?");
+                LCD_Escribir_C2(4, 0, "¿Llueve?", "Si(?)      No(?)");
+
+                LCD_Timer();
+
+                if (tecla == 10) {
+                    j1 = 1;
+                    break;
+                }
                 if (lluvia == 1) {
                     tecla = 1;
                     break;
@@ -1429,34 +750,62 @@ void INTERFACE_Sistema_Automatico_Llueve() {
                     tecla = 2;
                     break;
                 }
+
             case (1):
                 tecla = 0;
-                C3_1();
-                tecla = 2;
+
+                LCD_Escribir_C1(4, 1, "Ventanas");
+                LCD_Escribir_C2(4, 3, "Ventanas", "(ABIERTAS)");
+
+                LCD_Timer();
+
+                j1 = 1;
+                
+                if (tecla == 10) {
+                    x = 0;
+                    j = 1;
+                    j1 = 1;
+                }
+                break;
             case (2):
                 tecla = 0;
-                C3_2();
-                x = 0;
-                j = 1;
-                break;
-            case(10):
-                x = 0;
-                j = 1;
+
+                LCD_Escribir_C1(4, 1, "Ventanas");
+                LCD_Escribir_C2(4, 3, "Ventanas", "(CERRADAS)");
+
+                LCD_Timer();
+
+                j1 = 1;
+
+                if (tecla == 10) {
+                    x = 0;
+                    j = 1;
+                    j1 = 1;
+                }
                 break;
         }
     }
 }
 
-void INTERFACE_Sistema_Automatico_Tierra_Humeda(){
+void INTERFACE_Sistema_Automatico_Tierra_Humeda() {
     tecla = 0;
-    j = 0;
-    int Tierra_Humeda = 1;// Esto lo define el censor
-
-    while (j == 0) {
+    j1 = 0;
+    
+    while (j1 == 0) {
         switch (tecla) {
             case (0):
-                C3_3();
+
+                LCD_Escribir_C1(1, 1, "¿Tierra Humeda?");
+                LCD_Escribir_C2(1, 0, "¿Tierra Humeda?", "Si(?)      No(?)");
+
+                LCD_Timer();
                 
+                S_Hum_Suelo();
+                
+                if (tecla == 10) {
+                    j1 = 1;
+                    break;
+                }
                 if (Tierra_Humeda == 1) {
                     tecla = 1;
                     break;
@@ -1465,44 +814,88 @@ void INTERFACE_Sistema_Automatico_Tierra_Humeda(){
                     tecla = 2;
                     break;
                 }
+
             case (1):
                 tecla = 0;
-                C3_4();
+
+                PORTAbits.RA5 = 1;
+                
+                LCD_Escribir_C1(3, 1, "Aspersores");
+                LCD_Escribir_C2(3, 2, "Aspersores", "(ENCENDIDOS)");
+
+                LCD_Timer();
+
                 tecla = 2;
+
+                j1 = 1;
+
+                if (tecla == 10) {
+                    x = 0;
+                    j = 1;
+                    j1 = 1;
+                }
+                break;
             case (2):
                 tecla = 0;
-                C3_5();
-                x = 0;
-                j = 1;
-                break;
-            case(10):
-                x = 0;
-                j = 1;
+
+                PORTAbits.RA5 = 0;
+                
+                LCD_Escribir_C1(3, 1, "Aspersores");
+                LCD_Escribir_C2(3, 3, "Aspersores", "(APAGADOS)");
+
+                LCD_Timer();
+
+                j1 = 1;
+                
+                if (tecla == 10) {
+                    x = 0;
+                    j = 1;
+                    j1 = 1;
+                }
                 break;
         }
-    }  
+    }
 }
 
 void INTERFACE_Sistema_Automatico() {
     tecla = 0;
     j = 0;
-    
+
     while (j == 0) {
         switch (tecla) {
             case (0):
                 INTERFACE_Sistema_Automatico_Llueve();
+                if (tecla == 10) {
+                    x = 0;
+                    j = 1;
+                }
                 tecla = 1;
+                break;
             case (1):
                 INTERFACE_Sistema_Automatico_Tierra_Humeda();
+                if (tecla == 10) {
+                    x = 0;
+                    j = 1;
+                }
+                tecla = 2;
                 break;
-            case(10):
-                x = 0;
-                j = 1;
-                break;
+            case (2):
+                
+                tecla = 0;
+                LCD_Escribir_C1(1, 1, "Si desea salir");
+                LCD_Escribir_C2(1, 2, "Si desea salir", "PRESIONE (*)");
 
+                LCD_Timer();
+                
+                if (tecla == 10) {
+                    j = 1;
+                }
+                
+                tecla = 0;
+
+                break;
         }
     }
-
 }
 
 void INTERFACE_Sistema_Manual_Aspersores() {
@@ -1512,16 +905,35 @@ void INTERFACE_Sistema_Manual_Aspersores() {
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C4_0();
+
+                LCD_Escribir_C1(3, 1, "Aspersores");
+                LCD_Escribir_C2(3, 0, "Aspersores", "1.On       2.Off");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 tecla = 0;
-                C4_1();
+
+                PORTAbits.RA5 = 1;
+                
+                LCD_Escribir_C1(3, 1, "Aspersores");
+                LCD_Escribir_C2(3, 2, "Aspersores", "(ENCENDIDOS)");
+
+                LCD_Timer();
+
                 j = 1;
                 break;
             case (2):
                 tecla = 0;
-                C4_2();
+
+                PORTAbits.RA5 = 0;
+                
+                LCD_Escribir_C1(3, 1, "Aspersores");
+                LCD_Escribir_C2(3, 3, "Aspersores", "(APAGADOS)");
+
+                LCD_Timer();
+
                 j = 1;
                 break;
             case(10):
@@ -1540,17 +952,34 @@ void INTERFACE_Sistema_Manual_Ventanas() {
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C4_3();
+
+                LCD_Escribir_C1(4, 1, "Ventanas");
+                LCD_Escribir_C2(4, 0, "Ventanas", "1.On       2.Off");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 tecla = 0;
-                C4_4();
+
+                LCD_Escribir_C1(4, 1, "Ventanas");
+                LCD_Escribir_C2(4, 3, "Ventanas", "(ABIERTAS)");
+
+                LCD_Timer();
+
+                //PORTAbits.RA2 = 1;
                 x = 0;
                 j = 1;
                 break;
             case (2):
                 tecla = 0;
-                C4_5();
+
+                LCD_Escribir_C1(4, 1, "Ventanas");
+                LCD_Escribir_C2(4, 3, "Ventanas", "(CERRADAS)");
+
+                LCD_Timer();
+
+                //PORTAbits.RA0 = 0;
                 x = 0;
                 j = 1;
                 break;
@@ -1591,11 +1020,20 @@ void INTERFACE_Principal() {
     while (j == 0) {
         switch (tecla) {
             case (0):
-                C1_0();
+                LCD_Escribir_C1(0, 1, "1. Configuracion");
+                LCD_Escribir_C2(0, 0, "1. Configuracion", "2. Consulta Sens.");
+
+                LCD_Timer();
+
                 if (tecla == 1) {
                     break;
                 }
-                C2_0();
+
+                LCD_Escribir_C1(0, 1, "3. Sist. Autom.");
+                LCD_Escribir_C2(0, 0, "3. Sist. Autom.", "4. Sist. Manual");
+
+                LCD_Timer();
+
                 break;
             case (1):
                 INTERFACE_Configuracion();
