@@ -9,79 +9,81 @@ void interrupt Teclado(void) {
         b = 1;
         c = 1;
         i = 0;
+
         while (i < 3) {
             PORTBbits.RB3 = a;
             PORTBbits.RB2 = b;
             PORTBbits.RB1 = c;
 
-            if ((PORTBbits.RB7 == 0)&&(PORTBbits.RB1 == 0)) {       
+            if ((PORTBbits.RB7 == 0)&&(PORTBbits.RB1 == 0)) { //#       
 
                 LCD_Comando(0X01);
                 i = 10;
             }
 
-            if ((PORTBbits.RB7 == 0)&&(PORTBbits.RB2 == 0)) {
+            if ((PORTBbits.RB7 == 0)&&(PORTBbits.RB2 == 0)) { //0
 
                 tecla = 0;
                 i = 10;
             }
 
-            if ((PORTBbits.RB7 == 0)&&(PORTBbits.RB3 == 0)) {
+            if ((PORTBbits.RB7 == 0)&&(PORTBbits.RB3 == 0)) { //*
 
                 tecla = 10;
                 i = 10;
             }
 
-            if ((PORTBbits.RB6 == 0)&&(PORTBbits.RB1 == 0)) {
+            if ((PORTBbits.RB6 == 0)&&(PORTBbits.RB1 == 0)) { //9
 
                 tecla = 9;
                 i = 10;
             }
 
-            if ((PORTBbits.RB6 == 0)&&(PORTBbits.RB2 == 0)) {
+            if ((PORTBbits.RB6 == 0)&&(PORTBbits.RB2 == 0)) { //8 
 
                 tecla = 8;
                 i = 10;
             }
 
-            if ((PORTBbits.RB6 == 0)&&(PORTBbits.RB3 == 0)) {
+            if ((PORTBbits.RB6 == 0)&&(PORTBbits.RB3 == 0)) { //7
 
                 tecla = 7;
                 i = 10;
             }
 
-            if ((PORTBbits.RB5 == 0)&&(PORTBbits.RB1 == 0)) {
+            if ((PORTBbits.RB5 == 0)&&(PORTBbits.RB1 == 0)) { //6
 
                 tecla = 6;
                 i = 10;
             }
 
-            if ((PORTBbits.RB5 == 0)&&(PORTBbits.RB2 == 0)) {
+            if ((PORTBbits.RB5 == 0)&&(PORTBbits.RB2 == 0)) { //5
 
                 tecla = 5;
                 i = 10;
             }
 
-            if ((PORTBbits.RB5 == 0)&&(PORTBbits.RB3 == 0)) {
+            if ((PORTBbits.RB5 == 0)&&(PORTBbits.RB3 == 0)) { //4
 
                 tecla = 4;
                 i = 10;
             }
 
-            if ((PORTBbits.RB4 == 0)&&(PORTBbits.RB1 == 0)) {
+            if ((PORTBbits.RB4 == 0)&&(PORTBbits.RB1 == 0)) { //3
 
                 tecla = 3;
                 i = 10;
             }
 
-            if ((PORTBbits.RB4 == 0)&&(PORTBbits.RB2 == 0)) {
+            if ((PORTBbits.RB4 == 0)&&(PORTBbits.RB2 == 0)) { //2
+                
                 tecla = 2;
                 i = 10;
             }
 
-            if ((PORTBbits.RB4 == 0)&&(PORTBbits.RB3 == 0)) {
+            if ((PORTBbits.RB4 == 0)&&(PORTBbits.RB3 == 0)) { //1
 
-                tecla = 1;
+                tecla = 1 ;
                 i = 10;
             }
             i++;
@@ -97,7 +99,7 @@ void interrupt Teclado(void) {
                 b = 1;
                 c = 0;
             }
-            
+
             PORTB = 0;
             RBIF = 0;
         }
