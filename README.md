@@ -29,18 +29,17 @@
 >>  El sensor de humedad del suelo o el higrómetro se usa generalmente para detectar la humedad del suelo. Por lo tanto, es perfecto para construir un sistema de riego automático o para controlar la humedad del suelo de sus plantas.El sensor está configurado por dos piezas: la placa electrónica (a la derecha) y la sonda con dos almohadillas, que detecta el contenido de agua (a la izquierda). El sensor tiene un potenciómetro incorporado para el ajuste de sensibilidad de la salida digital (D0), un LED de alimentación y un LED de salida digital
 
 
-El voltaje que emite el sensor cambia de acuerdo con el contenido de agua en el suelo.
+>>  El voltaje que emite el sensor cambia de acuerdo con el contenido de agua en el suelo.
 
-Cuando el suelo es: 
+>>  Cuando el suelo es:
+>>  Húmedo: el voltaje de salida disminuye
+>>  Seco: el voltaje de salida aumenta    
 
-Húmedo: el voltaje de salida disminuye
-Seco: el voltaje de salida aumenta    
-
-<img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/soil-moisture-sensor-e1467578282801.png">
+>>  <img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/soil-moisture-sensor-e1467578282801.png">
     
-La salida puede ser una señal digital (D0) BAJA o ALTA, dependiendo del contenido de agua. Si la humedad del suelo excede un cierto valor umbral predefinido, el módulo emite BAJO, de lo contrario, emite ALTO. El valor umbral para la señal digital se puede ajustar con el potenciómetro.
+>>  La salida puede ser una señal digital (D0) BAJA o ALTA, dependiendo del contenido de agua. Si la humedad del suelo excede un cierto valor umbral predefinido, el módulo emite BAJO, de lo contrario, emite ALTO. El valor umbral para la señal digital se puede ajustar con el potenciómetro.
 
-La salida puede ser una señal analógica, por lo que obtendrá un valor entre 0 y 1023. 
+>>  La salida puede ser una señal analógica, por lo que obtendrá un valor entre 0 y 1023. 
 
 
 
