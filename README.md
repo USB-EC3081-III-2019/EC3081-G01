@@ -87,7 +87,7 @@
 >> Son dispositivos de accionamiento para el control de precision de velicidad, par motor y precison. Constituye un mejor desempeño de precision ante accionamientos mediante convertidores de frecuencia.
 
 
-<img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/futaba-s3003-servo-motor-1959-73-B.jpg">
+<img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/servos3003.png">
 
 
 ## Resultado Finales:
