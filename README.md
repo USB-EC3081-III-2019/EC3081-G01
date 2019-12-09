@@ -58,7 +58,7 @@
 
 >> Este elemento puede juzgar el nivel del agua con una serie de puntadas de cables paralelos expuestos para medir el tamaño de gota / agua. Este elemento puede cambiar fácilmente el tamaño del agua a señal analógica, y el valor analógico de salida se puede usar directamente en la función del programa, luego para lograr la función de alarma de nivel de agua. Este artículo tiene bajo consumo de energía y alta sensibilidad, que son las principales características de este mdoule.
 
->><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/watersensor.jpg">
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/watersensor.jpg" width="300" height="300">
 
 
 #### * Sensor detector de lluvia: [Detector de lluvia](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia%20con%20dos%20transistores.pdf)
@@ -88,7 +88,7 @@
 >> Son dispositivos de accionamiento para el control de precision de velicidad, par motor y precison. Constituye un mejor desempeño de precision ante accionamientos mediante convertidores de frecuencia.
 
 
->><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/servos3003.png">
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/servos3003.png" width="300" height="300">
 
 
 ## Resultado Finales:
