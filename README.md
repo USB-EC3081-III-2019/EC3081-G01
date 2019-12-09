@@ -81,6 +81,7 @@
 
 >> Son dispositivos creados para regular el Flujo (On / Off) de un fluido, estan diseñadas para poder usarse con agua, gas, aire, gas combustible, entre otros. Pueden ser de dos hasta cinco vias. Dependiendo el fluido que se valla a utilizar es el material de la válvula.
 
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/valvulaimagen.jpg">
 
 #### * Servomotor: [Electroválvas](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/servomotor.pdf)
 
