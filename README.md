@@ -89,10 +89,9 @@
 
 >><img src="">
 
+## Resultado Finales:
 
-### Diagrama de flujo tentativo:
-
->><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/DF02.png">
+<img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/IMG_20191209_122400.jpg">
 
 
 
