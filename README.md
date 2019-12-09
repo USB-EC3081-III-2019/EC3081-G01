@@ -38,9 +38,9 @@
 
 >> Este sensor funciona al tener una serie de trazas expuestas conectadas al suelo y entrelazadas entre las huellas conectadas a tierra que son las huellas sensitivas. Las trazas del sensor tienen una resistencia pull-up débil de 1 MΩ. La resistencia elevará el valor de rastreo del sensor hasta que una gota de agua cortocircuite el rastreo del sensor hasta el rastreo conectado a tierra. Créalo o no, este circuito funcionará con los pines de E / S digitales de su Arduino o puede usarlo con los pines analógicos para detectar la cantidad de contacto inducido por el agua entre los rastros de tierra y del sensor.
 
-Este elemento puede juzgar el nivel del agua con una serie de puntadas de cables paralelos expuestos para medir el tamaño de gota / agua. Este elemento puede cambiar fácilmente el tamaño del agua a señal analógica, y el valor analógico de salida se puede usar directamente en la función del programa, luego para lograr la función de alarma de nivel de agua. Este artículo tiene bajo consumo de energía y alta sensibilidad, que son las principales características de este mdoule.
+>> Este elemento puede juzgar el nivel del agua con una serie de puntadas de cables paralelos expuestos para medir el tamaño de gota / agua. Este elemento puede cambiar fácilmente el tamaño del agua a señal analógica, y el valor analógico de salida se puede usar directamente en la función del programa, luego para lograr la función de alarma de nivel de agua. Este artículo tiene bajo consumo de energía y alta sensibilidad, que son las principales características de este mdoule.
 
->><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia.png">
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/watersensor.jpg">
 
 
 #### * Sensor detector de lluvia: [Detector de lluvia](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia%20con%20dos%20transistores.pdf)
