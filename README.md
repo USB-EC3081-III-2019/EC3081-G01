@@ -25,6 +25,24 @@
 
 >><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/foto_celda.jpg"><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/fotorresistenciaLDR.png">
 
+#### * Sensor de humedad de suelo: [YL-69]
+>>  El sensor de humedad del suelo o el higrómetro se usa generalmente para detectar la humedad del suelo. Por lo tanto, es perfecto para construir un sistema de riego automático o para controlar la humedad del suelo de sus plantas.El sensor está configurado por dos piezas: la placa electrónica (a la derecha) y la sonda con dos almohadillas, que detecta el contenido de agua (a la izquierda). El sensor tiene un potenciómetro incorporado para el ajuste de sensibilidad de la salida digital (D0), un LED de alimentación y un LED de salida digital
+
+
+El voltaje que emite el sensor cambia de acuerdo con el contenido de agua en el suelo.
+
+Cuando el suelo es:
+
+    Húmedo: el voltaje de salida disminuye
+    Seco: el voltaje de salida aumenta
+    
+    
+La salida puede ser una señal digital (D0) BAJA o ALTA, dependiendo del contenido de agua. Si la humedad del suelo excede un cierto valor umbral predefinido, el módulo emite BAJO, de lo contrario, emite ALTO. El valor umbral para la señal digital se puede ajustar con el potenciómetro.
+
+La salida puede ser una señal analógica, por lo que obtendrá un valor entre 0 y 1023. 
+
+
+
 #### * Sensor de humedad de suelo:
 >>  El sensor de humedad sera capaz de establecer si el suelo esta humedo o seco, al no disponer de sesores de Humedad de sustrato en el laboratorio procederemos a crear nuestro propio sensor de humedad del suelo, tomando como base un video sencillo. Del cual logramos obtener nuestro circuito detector de humedad. 
 
@@ -32,7 +50,7 @@
 
 >> Para este circuito nos basamos del siguiente video : https://www.youtube.com/watch?v=8Sbl-Od3x8s Donde la resistencia variable "TIERRRA" Termina representando la terra del video, mostrado.
 
-#### * Sensor detector de lluvia: [Water Sensor](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia%20con%20dos%20transistores.pdf)
+#### * Sensor detector de lluvia: [Water Sensor]
 
 >> El bloque sensor de agua está diseñado para la detección de agua, se puede utilizar ampliamente para detectar la lluvia, el nivel de agua e incluso las fugas adecuadas. El ladrillo se compone principalmente de tres partes: un conector de ladrillo electrónico, una resistencia de 1 MΩ y varias líneas de cables conductores desnudos.
 
