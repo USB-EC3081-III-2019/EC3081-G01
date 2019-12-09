@@ -31,11 +31,12 @@
 
 El voltaje que emite el sensor cambia de acuerdo con el contenido de agua en el suelo.
 
-Cuando el suelo es:
+Cuando el suelo es: 
 
-    Húmedo: el voltaje de salida disminuye
-    Seco: el voltaje de salida aumenta
-    
+Húmedo: el voltaje de salida disminuye
+Seco: el voltaje de salida aumenta    
+
+<img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/soil-moisture-sensor-e1467578282801.png">
     
 La salida puede ser una señal digital (D0) BAJA o ALTA, dependiendo del contenido de agua. Si la humedad del suelo excede un cierto valor umbral predefinido, el módulo emite BAJO, de lo contrario, emite ALTO. El valor umbral para la señal digital se puede ajustar con el potenciómetro.
 
