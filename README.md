@@ -97,6 +97,8 @@ Demostracion de todos los sensores utilizados en este proyecto: https://www.yout
 
 <img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/IMG_20191209_122400.jpg">
 
+<img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/proyectoimagen.jpg">
+
 
 
 
