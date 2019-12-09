@@ -32,9 +32,20 @@
 
 >> Para este circuito nos basamos del siguiente video : https://www.youtube.com/watch?v=8Sbl-Od3x8s Donde la resistencia variable "TIERRRA" Termina representando la terra del video, mostrado.
 
+#### * Sensor detector de lluvia: [Water Sensor](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia%20con%20dos%20transistores.pdf)
+
+>> El bloque sensor de agua está diseñado para la detección de agua, se puede utilizar ampliamente para detectar la lluvia, el nivel de agua e incluso las fugas adecuadas. El ladrillo se compone principalmente de tres partes: un conector de ladrillo electrónico, una resistencia de 1 MΩ y varias líneas de cables conductores desnudos.
+
+>> Este sensor funciona al tener una serie de trazas expuestas conectadas al suelo y entrelazadas entre las huellas conectadas a tierra que son las huellas sensitivas. Las trazas del sensor tienen una resistencia pull-up débil de 1 MΩ. La resistencia elevará el valor de rastreo del sensor hasta que una gota de agua cortocircuite el rastreo del sensor hasta el rastreo conectado a tierra. Créalo o no, este circuito funcionará con los pines de E / S digitales de su Arduino o puede usarlo con los pines analógicos para detectar la cantidad de contacto inducido por el agua entre los rastros de tierra y del sensor.
+
+Este elemento puede juzgar el nivel del agua con una serie de puntadas de cables paralelos expuestos para medir el tamaño de gota / agua. Este elemento puede cambiar fácilmente el tamaño del agua a señal analógica, y el valor analógico de salida se puede usar directamente en la función del programa, luego para lograr la función de alarma de nivel de agua. Este artículo tiene bajo consumo de energía y alta sensibilidad, que son las principales características de este mdoule.
+
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia.png">
+
+
 #### * Sensor detector de lluvia: [Detector de lluvia](https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia%20con%20dos%20transistores.pdf)
 
->> Este sensor sera capaz de detectar si ha empezado a llover fiera de nuestro invernadero con la finalidad de activar las ventanas superiores para que se rieguenlas plantas con el agua de la lluvia. Este sensor al igual que el detector de humedad del suelo, deberemos crearlo ya que no poseemos el sensor necesario para el mismo.
+>> Este sensor sera capaz de detectar si ha empezado a llover fuera de nuestro invernadero con la finalidad de activar las ventanas superiores para que se rieguenlas plantas con el agua de la lluvia. Este sensor al igual que el detector de humedad del suelo, deberemos crearlo ya que no poseemos el sensor necesario para el mismo.
 
 >><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/Detector%20de%20lluvia.png">
 
