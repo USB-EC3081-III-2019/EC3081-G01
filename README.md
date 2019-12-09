@@ -87,10 +87,12 @@
 >> Son dispositivos de accionamiento para el control de precision de velicidad, par motor y precison. Constituye un mejor desempeño de precision ante accionamientos mediante convertidores de frecuencia.
 
 
-<img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/servos3003.png">
+>><img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/servos3003.png">
 
 
 ## Resultado Finales:
+
+Demostracion de todos los sensores utilizados en este proyecto: https://www.youtube.com/watch?v=nPfqjrQcy4U
 
 <img src="https://github.com/USB-EC3081-III-2019/EC3081-G01/blob/master/docs/IMG_20191209_122400.jpg">
 
